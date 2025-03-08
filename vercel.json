@@ -1,0 +1,4 @@
+{
+    "rewrites": [{ "source": "/pastes/:id", "destination": "/" }]
+  }
+  
