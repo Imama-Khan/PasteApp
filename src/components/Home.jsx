@@ -13,13 +13,17 @@ const Home = () => {
 
 
     useEffect(() => {
-        if(pasteId){
-            const paste=allPastes.find((p) => p._id === pasteId);
-            setTitle(paste.title);
-            setValue(paste.content);          
+        if (pasteId && allPastes.length > 0) {  // Ensure allPastes is loaded
+            const paste = allPastes.find((p) => p._id === pasteId);
+            if (paste) {  
+                setTitle(paste.title);
+                setValue(paste.content); 
+            } else {
+                console.error("Paste not found in allPastes");
+            }
         }
-
-    }, [pasteId])
+    }, [pasteId, allPastes]); // Also watch for allPastes changes
+    
 
 
     function createPaste(){
